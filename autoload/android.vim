@@ -33,6 +33,11 @@ function! android#install(activity)
   endif
 endfunction
 
+function! android#emulator()
+  call emulator#launch()
+endfunction
+
 function! android#setUpCommands()
   command! -nargs=1 Android call android#install(<f-args>)
+  command! AndroidEmulator call android#emulator()
 endfunction
