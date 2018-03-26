@@ -9,8 +9,6 @@ function! android#sdkPath()
 endfunction
 
 function! android#packageName()
-  let l:manifest = android#manifestFile()
-
   let l:result = system("cat " . $PWD . "/app/src/main/AndroidManifest.xml | awk /package=/ | cut -d= -f2 | sed -e 's/[^A-Za-z\.]//g'")
 
   return substitute(l:result, '\n\+$', '', '')

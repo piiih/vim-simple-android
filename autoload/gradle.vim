@@ -11,7 +11,7 @@ function! gradle#runBuild()
 endfunction
 
 function! gradle#install(mode)
-  echomsg "Installing apk..."
+  call logger#info("Installing apk...")
   let l:result = system(gradle#bin(). " install" . gradle#capitalize(a:mode), 'testing')
 
   redraw!
@@ -19,6 +19,7 @@ function! gradle#install(mode)
   echomsg ""
 
   if matchstr(l:result, 'BUILD FAILED') != ''
+    call logger#error('ERROR: Build failed while installing apk')
     return l:result
   endif
 
