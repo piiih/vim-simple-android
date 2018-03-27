@@ -19,7 +19,7 @@ function! gradle#install(mode)
   echomsg ""
 
   if matchstr(l:result, 'BUILD FAILED') != ''
-    call logger#error('ERROR: Build failed while installing apk')
+    call logger#error(l:result)
     return l:result
   endif
 
